@@ -48,7 +48,10 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //call web services login
-                    Login();
+                    Intent intent = new Intent(MainActivity.this,InitActivity.class);
+                    startActivity(intent);
+
+                    //Login();
                 }
             });
         }

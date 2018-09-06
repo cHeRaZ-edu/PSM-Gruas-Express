@@ -25,87 +25,12 @@
                 android:minHeight="?attr/actionBarSize" />
         </android.support.design.widget.AppBarLayout>
 
-        <ScrollView
-
+        <FrameLayout
+            android:id="@+id/fragment_base"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="?attr/actionBarSize">
-
-            <LinearLayout
-
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:background="@color/background_color"
-                android:orientation="vertical">
-
-                <Button
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:text="Servicios"
-                    android:textSize="36sp" />
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Maps"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Estado de Emergencia"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Mi Servicio"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Chat"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:orientation="horizontal">
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Configuracion"
-                        android:textSize="24sp" />
-
-                    <Button
-                        android:layout_width="match_parent"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:text="Salir"
-                        android:textSize="24sp" />
-                </LinearLayout>
-
-            </LinearLayout>
-        </ScrollView>
+            android:layout_height="match_parent"
+            android:layout_marginTop="?attr/actionBarSize"
+            />
 
         <android.support.v7.widget.Toolbar
             android:id="@+id/toolbar_bottom"

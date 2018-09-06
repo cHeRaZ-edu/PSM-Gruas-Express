@@ -52,7 +52,7 @@
             android:background="@color/white"
             android:hint="Password"
             android:textSize="18sp"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:layout_marginLeft="10dp"
             android:layout_marginRight="10dp"
             android:padding="8dp"/>

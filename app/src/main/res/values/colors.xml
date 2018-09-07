@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFF</color>
     <color name="background_color">#3c3f41</color>
+    <color name="FloatButtonColor">#5ea2b4</color>
 </resources>

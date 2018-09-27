@@ -7,7 +7,7 @@
         app:showAsAction="ifRoom" />
     <item android:id="@+id/idSearch"
         android:title="Search"
-        android:icon="@android:drawable/ic_menu_search"
+        android:icon="@drawable/ic_gesture_gray_24dp"
         app:showAsAction="ifRoom" />
     <item android:id="@+id/idChat"
         android:title="Chat"

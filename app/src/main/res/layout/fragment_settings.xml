@@ -3,12 +3,14 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/background_color">
 
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:layout_above="@+id/linearlayoutBtn">
+        android:layout_marginBottom="40dp">
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -17,18 +19,18 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
                 <ImageView
-                    android:id="@+id/imgViewBackground"
+                    android:id="@+id/imgViewBackgroundEdit"
                     android:layout_width="match_parent"
                     android:layout_height="200dp"
                     android:scaleType="centerCrop"
-                    android:contentDescription="Portada"
-                    android:src="@drawable/ic_photo_camera_black_56dp"/>
+                    android:contentDescription="Usuario"
+                    android:src="@drawable/ic_launcher_background" />
 
                 <de.hdodenhof.circleimageview.CircleImageView
                     android:id="@+id/imgViewUserEdit"
                     android:layout_width="100dp"
                     android:layout_height="100dp"
-                    android:contentDescription="imgViewPerfil"
+                    android:contentDescription="Usuario"
                     android:src="@drawable/ic_photo_camera_black_56dp" />
                 <TextView
                     android:id="@+id/txtViewNickname"
@@ -40,37 +42,241 @@
                     android:layout_marginStart="15dp"
                     android:layout_marginBottom="5dp"
                     android:textStyle="bold"
-                    android:textColor="#000"/>
+                    android:textColor="#fff"/>
             </FrameLayout>
-        </LinearLayout>
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal">
             <TextView
+                android:id="@+id/txtViewInfoCustom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="Nombre"/>
-            <EditText
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="30dp"
+                android:text="Informacion"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtViewNameCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Nombre: "
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:layout_weight="0.9">
+                        <android.support.v7.widget.CardView
+                            android:layout_width="250dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginRight="15dp"
+                            android:layout_gravity="right">
+                            <EditText
+                                android:id="@+id/editTxtNameCustom"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="Nombre"
+                                android:inputType="text"
+                                android:padding="4dp"
+                                android:layout_margin="5dp"
+                                android:background="@color/white"/>
+                        </android.support.v7.widget.CardView>
+                    </LinearLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp">
+                <TextView
+                    android:id="@+id/txtViewApellidoCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:text="Apellido:"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.9">
+                    <android.support.v7.widget.CardView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginRight="15dp"
+                        android:layout_gravity="right">
+                        <EditText
+                            android:id="@+id/editTxtApellidoCustom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Apellido"
+                            android:inputType="text"
+                            android:padding="4dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/white"/>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/txtViewEmailCustom"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:hint="Nombre"/>
+                android:text="Correo"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginStart="15dp"
+                android:textColor="@color/white"
+                android:textStyle="bold"/>
+
+            <TextView
+                android:id="@+id/txtViewChangeImageCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Cambiar Imagen"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtViewImgUserCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:text="Imagen Usuario"
+                    android:textSize="18sp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="10dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:orientation="vertical">
+                    <ImageButton
+                        android:id="@+id/imgBtnUserCustom"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end|top"
+                        android:layout_marginEnd="20dp"
+                        android:contentDescription="Buscar imagen"
+                        app:srcCompat="@android:drawable/ic_search_category_default" />
+                </LinearLayout>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/txtViewImgBackgroundUser"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.9"
+                    android:text="Portada Usuario"
+                    android:textSize="18sp"
+                    android:layout_gravity="start|top"
+                    android:layout_marginStart="20dp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.1">
+                    <ImageButton
+                        android:id="@+id/imgBtnBackgroundUserCustom"
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        android:layout_gravity="end|top"
+                        android:layout_marginEnd="20dp"
+                        android:contentDescription="Buscar"
+                        app:srcCompat="@android:drawable/ic_search_category_default" />
+                </LinearLayout>
+            </LinearLayout>
+            <TextView
+                android:id="@+id/textViewTelefonoTitleCustom"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="20dp"
+                android:text="Telefono"
+                android:textSize="22sp"
+                android:textColor="@color/white"
+                android:textStyle="bold" />
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:layout_marginBottom="15dp">
+
+                <TextView
+                    android:id="@+id/txtViewTelefonoCustom"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.1"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginStart="20dp"
+                    android:text="Telefono"
+                    android:textSize="18sp"
+                    android:textColor="@color/white"
+                    android:textStyle="bold"/>
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_weight="0.9">
+                    <android.support.v7.widget.CardView
+                        android:layout_width="250dp"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="right"
+                        android:layout_marginRight="15dp">
+                        <EditText
+                            android:id="@+id/editTxtTelefonoCustom"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Telefono"
+                            android:inputType="number"
+                            android:padding="4dp"
+                            android:layout_margin="5dp"
+                            android:background="@color/white"/>
+                    </android.support.v7.widget.CardView>
+                </LinearLayout>
+            </LinearLayout>
         </LinearLayout>
     </ScrollView>
 
-    <LinearLayout
-        android:id="@+id/linearlayoutBtn"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true">
-        <Button
-            android:id="@+id/btnEdit"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="25dp"
-            android:text="Editar"/>
-    </LinearLayout>
+        <android.support.design.widget.FloatingActionButton
+            android:id="@+id/idBtnFloatPhoto"
+            android:layout_width="92dp"
+            android:layout_height="80dp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginBottom="30dp"
+            android:layout_marginRight="10dp"
+            android:scaleType="center"
+            android:src="@android:drawable/ic_menu_camera"
+            app:fabSize="normal"
+            android:backgroundTint="@color/FloatButtonColor"
+            app:borderWidth="0dp"/>
+
 
 </RelativeLayout>

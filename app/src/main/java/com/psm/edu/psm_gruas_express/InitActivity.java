@@ -29,7 +29,6 @@ import com.psm.edu.psm_gruas_express.fragments.FragmentStateEmergency;
 
 public class InitActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
-    Toolbar toolbarBottom;
     Toolbar toolbarActionBar;
     ActionBarDrawerToggle mdrawerToggle;
     NavigationView navigationView;
@@ -41,7 +40,6 @@ public class InitActivity extends AppCompatActivity {
         //Find id view
         drawerLayout = (DrawerLayout) findViewById(R.id.idDrawerLayout);
         toolbarActionBar = (Toolbar) findViewById(R.id.toolbar_top);
-        toolbarBottom = (Toolbar) findViewById(R.id.toolbar_bottom);
         navigationView = (NavigationView) findViewById(R.id.nav_panel);
 
         //Navegation bar icon burger
@@ -53,7 +51,6 @@ public class InitActivity extends AppCompatActivity {
         mdrawerToggle.syncState();
 
         NavEventMenuItemView();
-        ToolbarBottomEvent();
 
         //Menu bottom
        // toolbarBottom.inflateMenu(R.menu.toolbar_shortcut);
@@ -180,9 +177,9 @@ public class InitActivity extends AppCompatActivity {
         });
     }
 
-    private void ToolbarBottomEvent() {
-        toolbarBottom.inflateMenu(R.menu.toolbar_shortcut);
-        toolbarBottom.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+    public void ToolbarBottomEvent(Toolbar toolview) {
+        toolview.inflateMenu(R.menu.toolbar_shortcut);
+        toolview.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem item) {
 

@@ -21,28 +21,16 @@
                 android:id="@+id/toolbar_top"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?attr/colorPrimary"
-                android:minHeight="?attr/actionBarSize" />
+                android:background="@color/colorPrimary"
+                android:minHeight="?android:actionBarSize" />
         </android.support.design.widget.AppBarLayout>
 
-        <FrameLayout
-            android:id="@+id/fragment_base"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_marginTop="?attr/actionBarSize"
-            />
-
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar_bottom"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="bottom|center_horizontal"
-            android:paddingLeft="10dp"
-            android:paddingRight="10dp"
-            android:background="?attr/colorPrimary"
-            android:minHeight="?attr/actionBarSize"
-            app:theme="@style/AppThemeBar"
-            app:menu="@menu/toolbar_shortcut"/>
+    <FrameLayout
+        android:id="@+id/fragment_base"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?android:actionBarSize"
+        android:background="@color/background_color"/>
 
     </android.support.design.widget.CoordinatorLayout>
 

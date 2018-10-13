@@ -5,11 +5,13 @@
         <item
             android:id="@+id/idInicio"
             android:title="Inicio"
-            app:showAsAction="withText"/>
+            android:icon="@drawable/ic_home_gray_24dp"
+            app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/idMiServicio"
             android:title="Mi Servicio"
-            app:showAsAction="withText"/>
+            android:icon="@drawable/ic_work_gray_24dp"
+            app:showAsAction="ifRoom"/>
     </group>
 
 
@@ -17,28 +19,33 @@
         <item
             android:id="@+id/idServicios"
             android:title="Servicios"
-            app:showAsAction="withText"/>
+            android:icon="@drawable/ic_work_gray_24dp"
+            app:showAsAction="ifRoom"/>
         <item
             android:id="@+id/idMaps"
             android:title="Maps"
-            app:showAsAction="withText"/>
+            android:icon="@android:drawable/ic_dialog_map"
+            app:showAsAction="ifRoom"/>
 
         <item
             android:id="@+id/idChat"
             android:title="Chat"
-            app:showAsAction="withText"/>
+            android:icon="@android:drawable/stat_notify_chat"
+            app:showAsAction="ifRoom"/>
     </group>
 
     <group>
         <item
             android:id="@+id/idSettings"
             android:title="Configuracion"
-            app:showAsAction="withText"/>
+            android:icon="@drawable/ic_settings_dark_24dp"
+            app:showAsAction="ifRoom"/>
 
         <item
             android:id="@+id/idSalir"
             android:title="Salir"
-            app:showAsAction="withText"/>
+            android:icon="@drawable/ic_exit_to_app_dark_24dp"
+            app:showAsAction="ifRoom"/>
     </group>
 
 

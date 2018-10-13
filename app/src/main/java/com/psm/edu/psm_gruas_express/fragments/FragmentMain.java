@@ -9,19 +9,20 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageButton;
 
 import com.psm.edu.psm_gruas_express.InitActivity;
 import com.psm.edu.psm_gruas_express.R;
 
 public class FragmentMain extends Fragment {
     public static final String TAG = "GUI_MAIN";
-    Button BtnService;
-    Button BtnMap;
-    Button BtnStateEmergency;
-    Button BtnMyService;
-    Button BtnChat;
-    Button BtnSettings;
-    Button BtnLogout;
+    ImageButton BtnService;
+    ImageButton BtnMap;
+    ImageButton BtnStateEmergency;
+    ImageButton BtnMyService;
+    ImageButton BtnChat;
+    ImageButton BtnSettings;
+    ImageButton BtnLogout;
     InitActivity activity;
     Toolbar toolbarBottom;
 

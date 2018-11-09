@@ -7,4 +7,5 @@
     <color name="background_color">#3c3f41</color>
     <color name="background_secoundary">#626364</color>
     <color name="FloatButtonColor">#5ea2b4</color>
+    <color name="colorButton">#939191</color>
 </resources>

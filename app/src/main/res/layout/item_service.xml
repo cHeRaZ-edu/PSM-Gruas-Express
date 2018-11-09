@@ -1,33 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="match_parent">
-    <android.support.v7.widget.CardView
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="2dp"
+    android:backgroundTint="@color/background_secoundary">
+    <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:padding="10dp"
-        android:backgroundTint="@color/background_secoundary">
-        <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+        android:layout_height="wrap_content">
 
-            <ImageView
-                android:id="@+id/imgViewBackgroundEdit"
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:scaleType="centerCrop"
-                android:contentDescription="servicio"
-                android:src="@drawable/ic_launcher_background" />
-            <TextView
-                android:id="@+id/txtViewNickname"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Servicio"
-                android:textSize="24sp"
-                android:layout_gravity="top|center_horizontal"
-                android:layout_marginTop="5dp"
-                android:textStyle="bold"
-                android:textColor="#fff"/>
-        </FrameLayout>
-    </android.support.v7.widget.CardView>
-</LinearLayout>
+        <ImageButton
+            android:id="@+id/imgBtnViewBackground"
+            android:layout_width="match_parent"
+            android:layout_height="200dp"
+            android:scaleType="centerCrop"
+            android:contentDescription="servicio"
+            android:src="@drawable/ic_launcher_background"
+            android:backgroundTint="@color/background_secoundary"/>
+
+        <TextView
+            android:id="@+id/tvName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Servicio"
+            android:textSize="24sp"
+            android:layout_gravity="top|center_horizontal"
+            android:layout_marginTop="5dp"
+            android:textStyle="bold"
+            android:textColor="#fff"/>
+    </FrameLayout>
+</android.support.v7.widget.CardView>

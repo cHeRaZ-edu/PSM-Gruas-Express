@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <!-- Facebook application ID and custom URL scheme (app ID prefixed by 'fb'). -->
-    <string name="facebook_application_id" translatable="false">YOUR_APP_ID</string>
-    <string name="facebook_login_protocol_scheme" translatable="false">fbYOUR_APP_ID</string>
+    <string name="facebook_application_id" translatable="false">397543310727274</string>
+    <string name="facebook_login_protocol_scheme" translatable="false">bbc32286d2b7f85e8c12aeace29e6492</string>
     <!-- Twitter consumer key and secret -->
-    <string name="twitter_consumer_key" translatable="false">YOUR_CONSUMER_KEY</string>
-    <string name="twitter_consumer_secret" translatable="false">YOUR_CONSUMER_SECRET</string>
+    <string name="twitter_consumer_key" translatable="false">RKNiXYBeXS5W0JxnovnnGx42v</string>
+    <string name="twitter_consumer_secret" translatable="false">uAW8ce2J2wTMQV2iYMGYs7PfAo6lPaepEW3TCh7fPRFrR5v57b</string>
 </resources>

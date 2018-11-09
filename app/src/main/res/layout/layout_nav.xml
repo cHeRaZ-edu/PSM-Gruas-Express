@@ -4,7 +4,7 @@
     android:layout_width="match_parent" android:layout_height="match_parent"
     android:background="@color/colorPrimary">
     <ImageView
-        android:id="@+id/imgViewBackgroundUserPanel"
+        android:id="@+id/imgBackgroundNav"
         android:layout_width="match_parent"
         android:layout_height="200dp"
         android:adjustViewBounds="false"
@@ -14,7 +14,7 @@
         android:src="@drawable/ic_launcher_background" />
 
     <de.hdodenhof.circleimageview.CircleImageView
-        android:id="@+id/imgViewUserPanel"
+        android:id="@+id/imgPerfilNav"
         android:layout_width="100dp"
         android:layout_height="100dp"
         android:layout_gravity="start|top"
@@ -23,7 +23,7 @@
         android:src="@drawable/ic_launcher_background" />
 
     <TextView
-        android:id="@+id/textViewNickname"
+        android:id="@+id/tvNicknameNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"
@@ -33,7 +33,7 @@
         android:text="Usuario"
         android:textAppearance="@style/TextAppearance.AppCompat"/>
     <TextView
-        android:id="@+id/textViewEmail"
+        android:id="@+id/tvEmailNav"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_gravity="bottom"

@@ -2,6 +2,7 @@ package com.psm.edu.psm_gruas_express;
 
 import android.app.FragmentManager;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
@@ -17,22 +18,37 @@ import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.firebase.ui.auth.AuthUI;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.gson.Gson;
 import com.psm.edu.psm_gruas_express.fragments.FragmentChat;
 import com.psm.edu.psm_gruas_express.fragments.FragmentMain;
 import com.psm.edu.psm_gruas_express.fragments.FragmentMap;
 import com.psm.edu.psm_gruas_express.fragments.FragmentMyService;
+import com.psm.edu.psm_gruas_express.fragments.FragmentServiceSelected;
 import com.psm.edu.psm_gruas_express.fragments.FragmentServices;
 import com.psm.edu.psm_gruas_express.fragments.FragmentSettings;
 import com.psm.edu.psm_gruas_express.fragments.FragmentStateEmergency;
+import com.psm.edu.psm_gruas_express.models.User;
+
+import de.hdodenhof.circleimageview.CircleImageView;
 
 public class InitActivity extends AppCompatActivity {
     DrawerLayout drawerLayout;
     Toolbar toolbarActionBar;
     ActionBarDrawerToggle mdrawerToggle;
     NavigationView navigationView;
+    TextView tvNickname;
+    TextView tvEmail;
+    CircleImageView imgPerfil;
+    ImageView imgBackground;
     String TAG="";
+    User user;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,6 +57,11 @@ public class InitActivity extends AppCompatActivity {
         drawerLayout = (DrawerLayout) findViewById(R.id.idDrawerLayout);
         toolbarActionBar = (Toolbar) findViewById(R.id.toolbar_top);
         navigationView = (NavigationView) findViewById(R.id.nav_panel);
+        View header = navigationView.getHeaderView(0);
+        tvNickname = (TextView) header.findViewById(R.id.tvNicknameNav);
+        tvEmail = (TextView) header.findViewById(R.id.tvEmailNav);
+        imgPerfil = (CircleImageView) header.findViewById(R.id.imgPerfilNav);
+        imgBackground = (ImageView) header.findViewById(R.id.imgBackgroundNav);
 
         //Navegation bar icon burger
         setSupportActionBar(toolbarActionBar);
@@ -52,43 +73,26 @@ public class InitActivity extends AppCompatActivity {
 
         NavEventMenuItemView();
 
-        //Menu bottom
-       // toolbarBottom.inflateMenu(R.menu.toolbar_shortcut);
-/*
-        mdrawerToggle.setToolbarNavigationClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                drawerLayout.openDrawer(GravityCompat.START);
-            }
-        });
-*/
-
-
         if (TAG.equals(""))
             changeFragment(new FragmentMain(), FragmentMain.TAG);
     }
 
-    public void changeFragment(Fragment newFragment, String tag) {
-        FragmentManager fragmentManager = getFragmentManager();
+    @Override
+    protected void onStart() {
+        super.onStart();
 
-        //Operaciones de agregar, remplazar y eliminar
+        Intent intent = getIntent();
 
-        // Administra los frgamentos de un activity
-        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
-        //Buscar si ya existe el mismo frgamento "abierto"
-        android.support.v4.app.Fragment fragmentoActual = fm.findFragmentByTag(tag);
-        if (fragmentoActual != null && fragmentoActual.isVisible()) {
-            Toast.makeText(getApplicationContext(), "Ya se esta mostrando", Toast.LENGTH_LONG).show();
-            return;
+        if(intent != null) {
+            String json_user =  intent.getStringExtra(Register.JSON_USER);
+            if(json_user == null) {
+                Toast.makeText(this,"No se encontro datos del usuario", Toast.LENGTH_SHORT).show();
+                ForceLogOut();
+            }
+            user = new Gson().fromJson(json_user, User.class);
+            tvNickname.setText("Usuario: " + user.getNickname());
+            tvEmail.setText("Correo: " + user.getEmail());
         }
-        // realiza las "transicciones" de un fragmento
-        // Agregar, remplazar y eliminar
-        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
-
-        ft.replace(R.id.fragment_base, newFragment, tag);
-
-        ft.commit();//aplicar cambios
-        TAG = tag;
     }
 
     @Override
@@ -101,6 +105,7 @@ public class InitActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    //Eventes
     @Override
     public void onBackPressed() {
 
@@ -111,34 +116,14 @@ public class InitActivity extends AppCompatActivity {
                 case FragmentMain.TAG:
                     LogOut();
                     return;
+                case FragmentServiceSelected.TAG:
+                    changeFragment(new FragmentServices(),FragmentServices.TAG);
+                    return;
                 default:
                     changeFragment(new FragmentMain(),FragmentMain.TAG);
 
             }
             }
-    }
-
-    public void LogOut() {
-        AlertDialog.Builder builder;
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
-        } else {
-            builder = new AlertDialog.Builder(this);
-        }
-        builder.setTitle("Salir")
-                .setMessage("Salir de mecanicos y Gruas")
-                .setPositiveButton("Salir", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                       finish();
-                    }
-                })
-                .setNegativeButton("Quedarse", new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int which) {
-                        // do nothing
-                    }
-                })
-                .setIcon(android.R.drawable.ic_dialog_info)
-                .show();
     }
 
     private void NavEventMenuItemView() {
@@ -198,5 +183,67 @@ public class InitActivity extends AppCompatActivity {
                 }
             }
         });
+    }
+
+    //Change Fragment
+    public void changeFragment(Fragment newFragment, String tag) {
+        FragmentManager fragmentManager = getFragmentManager();
+
+        //Operaciones de agregar, remplazar y eliminar
+
+        // Administra los frgamentos de un activity
+        android.support.v4.app.FragmentManager fm = getSupportFragmentManager();
+        //Buscar si ya existe el mismo frgamento "abierto"
+        android.support.v4.app.Fragment fragmentoActual = fm.findFragmentByTag(tag);
+        if (fragmentoActual != null && fragmentoActual.isVisible()) {
+            Toast.makeText(getApplicationContext(), "Ya se esta mostrando", Toast.LENGTH_LONG).show();
+            return;
+        }
+        // realiza las "transicciones" de un fragmento
+        // Agregar, remplazar y eliminar
+        android.support.v4.app.FragmentTransaction ft = fm.beginTransaction();
+
+        ft.replace(R.id.fragment_base, newFragment, tag);
+
+        ft.commit();//aplicar cambios
+        TAG = tag;
+    }
+
+    //LogOut
+    public void LogOut() {
+
+        AlertDialog.Builder builder;
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            builder = new AlertDialog.Builder(this, android.R.style.Theme_Material_Dialog_Alert);
+        } else {
+            builder = new AlertDialog.Builder(this);
+        }
+
+
+        builder.setTitle("Salir")
+                .setMessage("Salir de mecanicos y Gruas")
+                .setPositiveButton("Salir", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        ForceLogOut();
+                    }
+                })
+                .setNegativeButton("Quedarse", new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // do nothing
+                    }
+                })
+                .setIcon(android.R.drawable.ic_dialog_info)
+                .show();
+
+    }
+
+    private void ForceLogOut() {
+        AuthUI.getInstance()
+                .signOut(getApplicationContext())
+                .addOnCompleteListener(new OnCompleteListener<Void>() {
+                    public void onComplete(@NonNull Task<Void> task) {
+                        finish();
+                    }
+                });
     }
 }

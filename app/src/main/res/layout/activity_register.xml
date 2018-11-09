@@ -13,6 +13,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical">
         <ImageView
+            android:id="@+id/imgPerfilRegister"
             android:layout_width="75dp"
             android:layout_height="75dp"
             android:src="@drawable/ic_photo_camera_black_56dp"
@@ -35,17 +36,17 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/idEditTextName"
+                android:id="@+id/editTxtNameRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:background="@color/white"
                 android:hint="Nombre"
-                android:padding="8dp"
-                android:textSize="18sp"
                 android:inputType="text"
-                android:nextFocusDown="@+id/idEditTextLastName"/>
+                android:nextFocusDown="@+id/editTxtLastNameRegister"
+                android:padding="8dp"
+                android:textSize="18sp" />
         </android.support.v7.widget.CardView>
         <android.support.v7.widget.CardView
             android:layout_width="wrap_content"
@@ -56,7 +57,7 @@
             android:layout_weight="3">
 
             <EditText
-                android:id="@+id/idEditTextLastName"
+                android:id="@+id/editTxtLastNameRegister"
                 android:background="@color/white"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -82,16 +83,16 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/idEditTextUser"
+                android:id="@+id/editTxtNicknameRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:background="@color/white"
                 android:hint="Nombre de Usuario"
+                android:inputType="text"
                 android:padding="8dp"
-                android:textSize="18sp"
-                android:inputType="text"/>
+                android:textSize="18sp" />
         </android.support.v7.widget.CardView>
     </LinearLayout>
 
@@ -108,12 +109,12 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/idEditTextEmail"
+                android:id="@+id/editTxtEmailRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:background="@color/white"
                 android:hint="Correo"
                 android:inputType="textEmailAddress"
                 android:padding="8dp"
@@ -134,12 +135,12 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/idEditTextPassword"
+                android:id="@+id/editTxtPasswordRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:background="@color/white"
                 android:hint="Password"
                 android:inputType="textPassword"
                 android:padding="8dp"
@@ -160,12 +161,12 @@
             android:layout_weight="1">
 
             <EditText
-                android:id="@+id/idEditTextPasswordConfirm"
+                android:id="@+id/editTxtConfirmPasswordRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@color/white"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
+                android:background="@color/white"
                 android:hint="Confirm password"
                 android:inputType="textPassword"
                 android:padding="8dp"
@@ -177,28 +178,30 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1">
+
             <Button
+                android:id="@+id/btnRegister"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_alignParentBottom="true"
+                android:layout_marginBottom="15dp"
                 android:layout_marginLeft="15dp"
                 android:layout_marginRight="15dp"
-                android:layout_marginBottom="15dp"
-                android:layout_alignParentBottom="true"
-                android:text="Registrarse"/>
+                android:text="Registrarse" />
 
             <android.support.design.widget.FloatingActionButton
-                android:id="@+id/idBtnFloatPhoto"
+                android:id="@+id/btnPhotoRegister"
                 android:layout_width="92dp"
                 android:layout_height="80dp"
                 android:layout_alignParentBottom="true"
                 android:layout_alignParentRight="true"
                 android:layout_marginBottom="50dp"
                 android:layout_marginRight="10dp"
+                android:backgroundTint="@color/FloatButtonColor"
                 android:scaleType="center"
                 android:src="@android:drawable/ic_menu_camera"
-                app:fabSize="normal"
-                android:backgroundTint="@color/FloatButtonColor"
-                app:borderWidth="0dp"/>
+                app:borderWidth="0dp"
+                app:fabSize="normal" />
 
         </RelativeLayout>
 </LinearLayout>

@@ -12,6 +12,9 @@ import com.firebase.ui.auth.AuthUI;
 import com.firebase.ui.auth.IdpResponse;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.psm.edu.psm_gruas_express.models.NetCallback;
+import com.psm.edu.psm_gruas_express.models.User;
+import com.psm.edu.psm_gruas_express.networking.Networking;
 
 import java.util.Arrays;
 import java.util.List;
@@ -48,10 +51,8 @@ public class MainActivity extends AppCompatActivity {
                 @Override
                 public void onClick(View v) {
                     //call web services login
-                    Intent intent = new Intent(MainActivity.this,InitActivity.class);
-                    startActivity(intent);
+                    Login();
 
-                    //Login();
                 }
             });
         }
@@ -82,21 +83,51 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void Login() {
-        String name;
+        String nickname;
         String password;
-        name = editTextUser.getText().toString();
+        nickname = editTextUser.getText().toString();
         password = editTextPassword.getText().toString();
         //Validar edit vacios
-        if(name.toString().trim().isEmpty() || password.toString().trim().isEmpty()) {
+        if(nickname.toString().trim().isEmpty() || password.toString().trim().isEmpty()) {
             Toast.makeText(MainActivity.this,"Falta llenar campos" , Toast.LENGTH_SHORT).show();
             return;
         }
         // call web services login
+        new Networking(MainActivity.this).execute(Networking.LOGIN, nickname, password, new NetCallback() {
+            @Override
+            public void onWorkFinish(Object data) {
+                final User user = (User)data;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(MainActivity.this,"Bienvenido",Toast.LENGTH_SHORT).show();
+                        Intent intent = new Intent(MainActivity.this, InitActivity.class);
+                        intent.putExtra(Register.JSON_USER, user.toJSON());
+                        startActivity(intent);
+                    }
+                });
+
+
+            }
+
+            @Override
+            public void onMessageThreadMain(Object data) {
+                final String message = (String)data;
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),message , Toast.LENGTH_SHORT).show();
+                    }
+                });
+            }
+        });
     }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
+
+
 
         if (requestCode == RC_SIGN_IN) {
             IdpResponse response = IdpResponse.fromResultIntent(data);
@@ -104,13 +135,16 @@ public class MainActivity extends AppCompatActivity {
             if (resultCode == RESULT_OK) {
                 // Successfully signed in
                 FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
-                // ...
+                // ... Guardarlo en web services
+                Toast.makeText(this,"Usuario " + user.getDisplayName(), Toast.LENGTH_LONG).show();
+                Intent intent = new Intent(this,InitActivity.class);
+                startActivity(intent);
             } else {
                 // Sign in failed. If response is null the user canceled the
                 // sign-in flow using the back button. Otherwise check
                 // response.getError().getErrorCode() and handle the error.
                 // ...
-                Toast.makeText(this,"Error to Login",Toast.LENGTH_LONG).show();
+                Toast.makeText(this,"No fue posible iniciar sesion",Toast.LENGTH_LONG).show();
             }
         }
     }

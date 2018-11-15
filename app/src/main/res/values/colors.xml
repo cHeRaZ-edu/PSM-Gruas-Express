@@ -8,4 +8,5 @@
     <color name="background_secoundary">#626364</color>
     <color name="FloatButtonColor">#5ea2b4</color>
     <color name="colorButton">#939191</color>
+    <color name="color_message">#dcf8c6</color>
 </resources>

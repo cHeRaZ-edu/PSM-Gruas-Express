@@ -24,13 +24,18 @@
                 android:background="@color/colorPrimary"
                 android:minHeight="?android:actionBarSize" />
         </android.support.design.widget.AppBarLayout>
-
-    <FrameLayout
-        android:id="@+id/fragment_base"
+    <android.gesture.GestureOverlayView
+        android:id="@+id/gesture_view"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="?android:actionBarSize"
-        android:background="@color/background_color"/>
+        android:layout_marginTop="?android:actionBarSize">
+        <FrameLayout
+            android:id="@+id/fragment_base"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/background_color"/>
+    </android.gesture.GestureOverlayView>
+
 
     </android.support.design.widget.CoordinatorLayout>
 

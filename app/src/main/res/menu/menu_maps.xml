@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <group>
+        <item
+            android:id="@+id/idMenuGrua"
+            android:title="Gruas"
+            android:icon="@drawable/ic_work_gray_24dp"
+            app:showAsAction="ifRoom"/>
+        <item
+            android:id="@+id/idStateEmergency"
+            android:title="Autos en emergencia"
+            android:icon="@drawable/ic_state_emergency_gray_24dp"
+            app:showAsAction="ifRoom"/>
+    </group>
+</menu>

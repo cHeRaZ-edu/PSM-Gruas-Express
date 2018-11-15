@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
+
 import com.psm.edu.psm_gruas_express.R;
 
 import java.math.BigDecimal;
@@ -87,6 +88,13 @@ public class VoteView {
         float ratting_2 = (float)two/(float)moda;
         float ratting_1 = (float)one/(float)moda;
 
+        ratting_5 = ratting_5 == 0.0f ? 0.01f : ratting_5;
+        ratting_4 = ratting_4 == 0.0f ? 0.01f : ratting_4;
+        ratting_3 = ratting_3 == 0.0f ? 0.01f : ratting_3;
+        ratting_2 = ratting_2 == 0.0f ? 0.01f : ratting_2;
+        ratting_1 = ratting_1 == 0.0f ? 0.01f : ratting_1;
+
+
         ((LinearLayout.LayoutParams)barRatting_5.getLayoutParams()).weight = ratting_5;
         ((LinearLayout.LayoutParams)paddingBar_5.getLayoutParams()).weight = (1f - ratting_5);
         ((LinearLayout.LayoutParams)barRatting_4.getLayoutParams()).weight = ratting_4;
@@ -101,11 +109,35 @@ public class VoteView {
     }
 
     public void notifyChanged() {
+        if((five + four + three + two + one) == 0) {
+            ViewDefault();
+            return;
+        }
+
         float result = ((float)(five*5 + four*4 + three*3 + two*2 + one)) / ((float) (five + four + three + two + one));
         BigDecimal bd = BigDecimal.valueOf(result);
         bd = bd.setScale(1, RoundingMode.HALF_UP);
         SetRatingBar(bd.floatValue());
+    }
 
+    private void ViewDefault() {
+        ratingBar.setRating(0.0f);
+        tvPromedio.setText("0.0");
+        float ratting_5 = 0.01f;
+        float ratting_4 = 0.01f;
+        float ratting_3 = 0.01f;
+        float ratting_2 = 0.01f;
+        float ratting_1 = 0.01f;
+        ((LinearLayout.LayoutParams)barRatting_5.getLayoutParams()).weight = ratting_5;
+        ((LinearLayout.LayoutParams)paddingBar_5.getLayoutParams()).weight = (1f - ratting_5);
+        ((LinearLayout.LayoutParams)barRatting_4.getLayoutParams()).weight = ratting_4;
+        ((LinearLayout.LayoutParams)paddingBar_4.getLayoutParams()).weight = (1f - ratting_4);
+        ((LinearLayout.LayoutParams)barRatting_3.getLayoutParams()).weight = ratting_3;
+        ((LinearLayout.LayoutParams)paddingBar_3.getLayoutParams()).weight = (1f - ratting_3);
+        ((LinearLayout.LayoutParams)barRatting_2.getLayoutParams()).weight = ratting_2;
+        ((LinearLayout.LayoutParams)paddingBar_2.getLayoutParams()).weight = (1f - ratting_2);
+        ((LinearLayout.LayoutParams)barRatting_1.getLayoutParams()).weight = ratting_1;
+        ((LinearLayout.LayoutParams)paddingBar_1.getLayoutParams()).weight = (1f - ratting_1);
     }
 
     private int getVoteModa() {

@@ -3,26 +3,24 @@ package com.psm.edu.psm_gruas_express;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.net.Uri;
+import android.os.Bundle;
 import android.provider.MediaStore;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Toast;
 
+import com.psm.edu.psm_gruas_express.models.Grua;
 import com.psm.edu.psm_gruas_express.models.NetCallback;
+import com.psm.edu.psm_gruas_express.models.User;
 import com.psm.edu.psm_gruas_express.networking.Networking;
 import com.psm.edu.psm_gruas_express.photoUtil.PhotoUtil;
-import com.psm.edu.psm_gruas_express.models.User;
+import com.psm.edu.psm_gruas_express.sharedprefences.SharedUtil;
 
 import java.io.IOException;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
 
 public class Register extends AppCompatActivity {
     private Register instance;
@@ -38,7 +36,7 @@ public class Register extends AppCompatActivity {
     private boolean isPhoto = false;
     private Bitmap bitmap;
     public static final String JSON_USER = "json_user";
-
+    public static final String JSON_GRUA = "json_grua";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -61,16 +59,26 @@ public class Register extends AppCompatActivity {
                             editTxtPassword.getText().toString()
                     );
                     // Register ...
+                    if(!Networking.isNetworkAvailable(Register.this)) {
+                        Toast.makeText(Register.this,"No hay internet",Toast.LENGTH_SHORT).show();
+                        return;
+                    }
                     new Networking(Register.this).execute(Networking.SIGNUP, user,bitmap, new NetCallback() {
                         @Override
-                        public void onWorkFinish(Object data) {
-                            final User user = (User)data;
+                        public void onWorkFinish(Object... objects) {
+                            final User user = (User)objects[0];
                             runOnUiThread(new Runnable() {
                                 @Override
                                 public void run() {
                                     Toast.makeText(getApplicationContext(),"Bienvenido" , Toast.LENGTH_SHORT).show();
                                     Intent intent = new Intent(Register.this,InitActivity.class);
                                     intent.putExtra(JSON_USER, user.toJSON());
+                                    Grua grua = new Grua("","", "");
+                                    grua.setId(-1);
+                                    intent.putExtra(JSON_GRUA, grua.toJSON());
+                                    SharedUtil.setUserNickname(Register.this,user.getNickname());
+                                    SharedUtil.setUserPassword(Register.this, user.getPassword());
+                                    SharedUtil.setUserProvider(Register.this, user.getProvider());
                                     startActivity(intent);
                                 }
                             });
@@ -157,6 +165,7 @@ public class Register extends AppCompatActivity {
         if (resultCode == RESULT_OK && PhotoUtil.PHOTO_SHOT == requestCode) {
             isPhoto = true;
             bitmap = (Bitmap) data.getExtras().get("data");
+            bitmap = PhotoUtil.ResizeBitmap(bitmap);
             imgPerfil.setImageBitmap(bitmap);
 
         } else if(resultCode == RESULT_OK && PhotoUtil.STORAGE_IMAGE == requestCode) {
@@ -164,6 +173,7 @@ public class Register extends AppCompatActivity {
             Uri uri = data.getData();
             try {
                 bitmap =  MediaStore.Images.Media.getBitmap(this.getContentResolver(), uri);
+                bitmap = PhotoUtil.ResizeBitmap(bitmap);
                 imgPerfil.setImageBitmap(bitmap);
             } catch (IOException e) {
                 e.printStackTrace();

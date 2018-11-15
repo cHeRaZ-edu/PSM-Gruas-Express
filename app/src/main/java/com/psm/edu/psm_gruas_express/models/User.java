@@ -10,6 +10,12 @@ public class User {
     private String Email;
     private String Password;
     private String imageURL;
+    private String imageBackgroundURL;
+    private String Provider;//google.com,twitter.com,facebook.com
+    private String Phone;
+
+    public User() {
+    }
 
     public User(String name, String lastName, String nickname, String email, String Password) {
         Name = name;
@@ -26,6 +32,16 @@ public class User {
         Email = email;
         this.Password = Password;
         this.imageURL = imageURL;
+    }
+
+    public User(String name, String lastName, String nickname, String email, String password, String imageURL, String provider) {
+        Name = name;
+        LastName = lastName;
+        Nickname = nickname;
+        Email = email;
+        Password = password;
+        this.imageURL = imageURL;
+        Provider = provider;
     }
 
     public int getId() {
@@ -82,6 +98,30 @@ public class User {
 
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
+    }
+
+    public String getImageBackgroundURL() {
+        return imageBackgroundURL;
+    }
+
+    public void setImageBackgroundURL(String imageBackgroundURL) {
+        this.imageBackgroundURL = imageBackgroundURL;
+    }
+
+    public String getProvider() {
+        return Provider;
+    }
+
+    public void setProvider(String provider) {
+        Provider = provider;
+    }
+
+    public String getPhone() {
+        return Phone;
+    }
+
+    public void setPhone(String phone) {
+        Phone = phone;
     }
 
     public String toJSON() {

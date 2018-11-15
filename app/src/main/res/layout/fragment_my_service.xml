@@ -15,134 +15,15 @@
             android:orientation="vertical">
             <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
                 <ImageView
+                    android:id="@+id/imgViewMyService"
                     android:layout_width="match_parent"
                     android:layout_height="150dp"
-                    android:src="@drawable/ic_launcher_background"
-                    android:scaleType="center"/>
-            </LinearLayout>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
-                <!--Value Star-->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="horizontal"
-                    android:layout_weight="1"
-                    android:paddingTop="5dp">
-                    <LinearLayout
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1"/>
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="0.0"
-                        android:textSize="36sp"
-                        android:layout_gravity="left"
-                        android:textColor="@color/white"
-                        android:layout_marginRight="5dp"/>
-                </LinearLayout>
-                <!--Rating star-->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="1">
-
-                    <RatingBar
-                        style="@style/Widget.AppCompat.RatingBar.Small"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:numStars="5"
-                        android:rating="5" />
-                </LinearLayout>
-                <!--Slider Bar color-->
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical"
-                    android:layout_weight="2">
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="5dp"
-                            android:backgroundTint="#09a904"
-                            android:layout_marginRight="15dp"
-                            android:layout_weight="0.80"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="5dp"
-                            android:layout_weight="0.20"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="5dp"
-                            android:backgroundTint="#96e763"
-                            android:layout_marginRight="15dp"
-                            android:layout_weight="0.50"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="5dp"
-                            android:layout_weight="0.50"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="5dp"
-                            android:backgroundTint="#f1ed0b"
-                            android:layout_marginRight="15dp"
-                            android:layout_weight="0.3"/>
-                        <LinearLayout
-                            android:layout_width="wrap_content"
-                            android:layout_height="5dp"
-                            android:layout_weight="0.7"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <android.support.v7.widget.CardView
-                            android:layout_width="wrap_content"
-                            android:layout_height="5dp"
-                            android:backgroundTint="#f25309"
-                            android:layout_marginRight="15dp"
-                            android:layout_weight="0.1"/>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="5dp"
-                            android:layout_weight="0.9"/>
-                    </LinearLayout>
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:orientation="horizontal">
-                        <android.support.v7.widget.CardView
-                            android:layout_width="0dp"
-                            android:layout_height="5dp"
-                            android:backgroundTint="#f92509"
-                            android:layout_marginRight="15dp"
-                            android:layout_weight="0.03"/>
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="5dp"
-                            android:layout_weight="0.97"/>
-                    </LinearLayout>
-
-                </LinearLayout>
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_launcher_background" />
             </LinearLayout>
             <LinearLayout
                 android:layout_width="match_parent"
@@ -165,13 +46,15 @@
                         android:layout_height="wrap_content"
                         android:padding="5dp"
                         android:layout_weight="0.8">
+
                         <EditText
+                            android:id="@+id/editTxtNameMyService"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:hint="Nombre"
                             android:layout_margin="2dp"
                             android:background="@color/white"
-                            android:inputType="text"/>
+                            android:hint="Nombre"
+                            android:inputType="text" />
                     </android.support.v7.widget.CardView>
                 </LinearLayout>
                 <TextView
@@ -188,12 +71,13 @@
                     android:layout_height="80dp">
 
                     <EditText
+                        android:id="@+id/editTxtDescMyService"
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
                         android:layout_gravity="top|left"
-                        android:gravity="top"
                         android:layout_margin="5dp"
                         android:background="@color/white"
+                        android:gravity="top"
                         android:hint="Descripcion"
                         android:inputType="textMultiLine"
                         android:textSize="14sp" />
@@ -210,11 +94,13 @@
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="14sp"/>
+
                     <TextView
+                        android:id="@+id/tvUserNameMyService"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="Fulano de tal"/>
+                        android:text="Fulano de tal"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <TextView
@@ -237,11 +123,13 @@
                         android:textStyle="bold"
                         android:textColor="@color/white"
                         android:textSize="14sp"/>
+
                     <TextView
+                        android:id="@+id/tvPhoneMyService"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="00-00-00-00"/>
+                        android:text="00-00-00-00"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -254,11 +142,13 @@
                         android:textColor="@color/white"
                         android:textStyle="bold"
                         android:textSize="14sp"/>
+
                     <TextView
+                        android:id="@+id/tvEmailMyService"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:textColor="@color/white"
-                        android:text="example@example.example"/>
+                        android:text="example@example.example"
+                        android:textColor="@color/white" />
                 </LinearLayout>
 
                 <LinearLayout
@@ -266,9 +156,10 @@
                     android:layout_height="50dp"
                     android:orientation="horizontal">
                     <ImageButton
+                        android:id="@+id/btnPhotoMyService"
                         android:layout_width="wrap_content"
                         android:layout_height="match_parent"
-                        android:src="@android:drawable/ic_dialog_map"/>
+                        android:src="@android:drawable/ic_menu_camera"/>
                 </LinearLayout>
 
             </LinearLayout>
@@ -292,16 +183,18 @@
                 app:theme="@style/AppThemeBar"
                 app:menu="@menu/toolbar_shortcut"/>
         </android.support.v7.widget.CardView>
-        <android.support.design.widget.FloatingActionButton
-            android:layout_width="200dp"
-            android:layout_height="200dp"
-            android:layout_margin="5dp"
-            android:scaleType="center"
-            android:src="@android:drawable/ic_menu_save"
-            app:fabSize="normal"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentBottom="true"
-            android:backgroundTint="@color/background_secoundary"
-            app:borderWidth="0dp"/>
+
+    <android.support.design.widget.FloatingActionButton
+        android:id="@+id/btnSaveMyService"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_margin="5dp"
+        android:backgroundTint="@color/background_secoundary"
+        android:scaleType="center"
+        android:src="@android:drawable/ic_menu_save"
+        app:borderWidth="0dp"
+        app:fabSize="normal" />
 
 </RelativeLayout>

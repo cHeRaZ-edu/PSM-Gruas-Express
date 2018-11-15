@@ -3,6 +3,8 @@ package com.psm.edu.psm_gruas_express.photoUtil;
 import android.app.Activity;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.Matrix;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -54,4 +56,33 @@ public class PhotoUtil {
                 .setIcon(android.R.drawable.ic_dialog_info)
                 .show();
     }
+
+    public static Bitmap ResizeBitmap(Bitmap bitmap) {
+        int width = bitmap.getWidth();
+        int height = bitmap.getHeight();
+        if(width<1200 && height<1200)
+            return bitmap;
+        int perHeight = 100, perWidth = 100;
+        if(width>1200)
+            perWidth = 120000/width;
+        if(height>1200)
+            perHeight = 120000/height;
+        int per_aux = perHeight > perWidth ? perWidth : perHeight;
+        float per = (float)per_aux/100f;
+        float scaleWidth = ((float) width * per) / width;
+        float scaleHeight = ((float) height * per) / height;
+
+        // CREATE A MATRIX FOR THE MANIPULATION
+        Matrix matrix = new Matrix();
+        // RESIZE THE BIT MAP
+        matrix.postScale(scaleWidth, scaleHeight);
+
+        // "RECREATE" THE NEW BITMAP
+        Bitmap temp = Bitmap.createBitmap(
+                bitmap, 0, 0, width, height, matrix, false);
+        bitmap.recycle();
+
+        return temp;
+    }
 }
+

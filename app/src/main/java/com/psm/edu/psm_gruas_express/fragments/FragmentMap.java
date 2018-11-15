@@ -16,6 +16,7 @@ public class FragmentMap extends Fragment {
     public static final String TAG = "MAPS";
     InitActivity activity;
     Toolbar toolbarBottom;
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -24,6 +25,8 @@ public class FragmentMap extends Fragment {
         toolbarBottom = (Toolbar) view.findViewById(R.id.toolbar_bottom);
         activity.ToolbarBottomEvent(toolbarBottom);
 
+
         return view;
     }
+
 }

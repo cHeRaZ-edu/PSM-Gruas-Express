@@ -5,30 +5,38 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
     <android.support.v7.widget.CardView
+        android:id="@+id/cardViewMessage"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_gravity="right"
+        android:layout_gravity="left"
         app:cardBackgroundColor="@color/white">
         <LinearLayout
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
+
             <ImageView
+                android:id="@+id/imgViewMessage"
                 android:layout_width="280dp"
                 android:layout_height="280dp"
                 android:layout_gravity="center_horizontal"
-                android:src="@drawable/ic_launcher_background"/>
+                android:src="@drawable/ic_launcher_background"
+                android:visibility="visible" />
             <TextView
+                android:id="@+id/tvDescMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
                 android:maxWidth="280dp"
+                android:textColor="@color/background_secoundary"
                 android:text="Mensaje enviado a tal personasdfsdfsdf sdfsdfsd sdf sdfsdf sdfsdfsdf sdfsdfsd"/>
             <TextView
+                android:id="@+id/tvTimeMessage"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="5dp"
+                android:textColor="@color/background_secoundary"
                 android:layout_gravity="right"
                 android:textSize="10sp"
                 android:text="000:00 PM"/>

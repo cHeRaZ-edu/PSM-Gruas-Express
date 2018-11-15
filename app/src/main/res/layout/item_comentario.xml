@@ -17,6 +17,7 @@
                 android:orientation="vertical"
                 android:layout_weight="0.1">
                 <RatingBar
+                    android:id="@+id/ratingBarComemntary"
                     style="@style/Widget.AppCompat.RatingBar.Small"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -24,12 +25,14 @@
                     android:numStars="5"
                     android:rating="5" />
                 <de.hdodenhof.circleimageview.CircleImageView
-                    android:layout_width="100dp"
-                    android:layout_height="100dp"
+                    android:id="@+id/imgViewUserCommentary"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
                     android:layout_gravity="center_horizontal"
                     android:src="@drawable/ic_launcher_background"/>
             </LinearLayout>
             <TextView
+                android:id="@+id/tvCommentary"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.9"

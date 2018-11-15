@@ -8,14 +8,32 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical">
-        <Button
+        android:orientation="vertical"
+        android:layout_marginBottom="60dp">
+        <android.support.v7.widget.CardView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="50dp"
+            android:backgroundTint="@color/background_secoundary">
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="horizontal">
+                <TextView
+                    android:id="@+id/tvUserNameMessage"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="User name"
+                    android:textStyle="bold"
+                    android:textSize="24sp"
+                    android:layout_marginLeft="10dp"
+                    android:layout_gravity="center_vertical"/>
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
        <ListView
            android:id="@+id/lvMessages"
            android:layout_width="match_parent"
-           android:layout_height="wrap_content"/>
+           android:layout_height="wrap_content"
+           android:layout_marginTop="10dp"/>
     </LinearLayout>
 
 
@@ -32,6 +50,7 @@
                   android:layout_height="match_parent"
                   android:orientation="horizontal">
                   <EditText
+                      android:id="@+id/editTxtMessage"
                       android:layout_width="0dp"
                       android:layout_height="match_parent"
                       android:layout_margin="5dp"
@@ -47,6 +66,7 @@
                       android:orientation="vertical"
                       android:layout_gravity="center_vertical">
                       <ImageButton
+                          android:id="@+id/btnPhotoMessage"
                           android:layout_width="50dp"
                           android:layout_height="50dp"
                           android:layout_gravity="right"
@@ -56,6 +76,7 @@
           </android.support.v7.widget.CardView>
 
               <android.support.design.widget.FloatingActionButton
+                  android:id="@+id/btnSendMessage"
                   android:layout_width="50dp"
                   android:layout_height="50dp"
                   android:layout_gravity="bottom"

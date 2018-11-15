@@ -11,11 +11,11 @@ import android.view.ViewGroup;
 
 import com.psm.edu.psm_gruas_express.InitActivity;
 import com.psm.edu.psm_gruas_express.R;
-
 public class FragmentStateEmergency extends Fragment {
     public static final String TAG = "StateEmergency";
     InitActivity activity;
     Toolbar toolbarBottom;
+
 
     @Nullable
     @Override

@@ -54,8 +54,8 @@ public class UserSessionDataSource extends SQLHelper {
         values.put(COLUMN_NAME,user.getName());
         values.put(COLUMN_LAST_NAME,user.getLastName());
         values.put(COLUMN_NICKNAME,user.getNickname());
-        values.put(COLUMN_EMAIL,user.getPassword());
-        values.put(COLUMN_PASSWORD,user.getEmail());
+        values.put(COLUMN_EMAIL,user.getEmail());
+        values.put(COLUMN_PASSWORD,user.getPassword());
         values.put(COLUMN_IMG_URL,user.getImageURL());
         values.put(COLUMN_IMG_URL_BACKGROUND,user.getImageBackgroundURL());
         values.put(COLUMN_PROVIDER,user.getProvider());

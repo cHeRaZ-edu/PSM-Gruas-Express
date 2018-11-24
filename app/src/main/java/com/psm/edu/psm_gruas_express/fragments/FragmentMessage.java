@@ -254,8 +254,10 @@ public class FragmentMessage extends Fragment {
             while (initActivity.TAG.equals(TAG)) {
 
                 // escuchar si llego otro mensaje
-
-                GetLastMessages(messages.get(messages.size()-1).getId(),callback);
+                int num = messages.size();
+                if(num != 0) {
+                    GetLastMessages(messages.get(messages.size()-1).getId(),callback);
+                }
 
                 try {
                     Thread.sleep(2500);

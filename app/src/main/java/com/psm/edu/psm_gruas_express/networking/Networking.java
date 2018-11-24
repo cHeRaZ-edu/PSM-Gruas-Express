@@ -41,7 +41,7 @@ import java.util.Iterator;
 import java.util.List;
 
 public class Networking extends AsyncTask<Object, Integer, Object> {
-    public static final String SERVER_IP  ="http://192.168.1.70/";
+    public static final String SERVER_IP  ="http://192.168.1.65/";
     public static final String SERVER_PATH = SERVER_IP + "APIHttp.php";
     public static final int TIMEOUT = 3000;
 

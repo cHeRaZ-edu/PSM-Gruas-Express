@@ -102,6 +102,7 @@ public class InitActivity extends AppCompatActivity {
         switchMode = (Switch) header.findViewById(R.id.switchEmergency);
         gestureView = (GestureOverlayView) findViewById(R.id.gesture_view);
         imgBackgroundService = new ImageView(this);
+        imgBackgroundService.setImageDrawable(this.getResources().getDrawable(R.drawable.ic_photo_camera_black_56dp));
 
         EventModeUser();
 
@@ -262,7 +263,11 @@ public class InitActivity extends AppCompatActivity {
                         changeFragment(new FragmentServices(),FragmentServices.TAG);
                         break;
                     case R.id.idMaps:
-                        changeFragment(new FragmentMap(), FragmentMap.TAG);
+                        Intent intent = new Intent(InitActivity.this, ActivityMap.class);
+                        intent.putExtra(Register.JSON_USER, user.toJSON());
+                        intent.putExtra(InitActivity.KEY_INVISIBLE,invisible);
+                        intent.putExtra(InitActivity.KEY_MODE, mode_user);
+                        startActivityForResult(intent,InitActivity.REQUEST_CODE_GET_MODES);
                         break;
                     case R.id.idChat:
                         changeFragment(new FragmentChat(),FragmentChat.TAG);

@@ -1,10 +1,13 @@
 package com.psm.edu.psm_gruas_express.photoUtil;
 
 import android.app.Activity;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.Canvas;
 import android.graphics.Matrix;
+import android.graphics.drawable.Drawable;
 import android.os.Build;
 import android.provider.MediaStore;
 import android.support.v7.app.AlertDialog;
@@ -83,6 +86,22 @@ public class PhotoUtil {
         bitmap.recycle();
 
         return temp;
+    }
+
+    public static Bitmap getBitmap(Drawable drawable, Bitmap.Config config) {
+        try {
+            Bitmap bitmap;
+
+            bitmap = Bitmap.createBitmap(drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight(), config);
+
+            Canvas canvas = new Canvas(bitmap);
+            drawable.setBounds(0, 0, canvas.getWidth(), canvas.getHeight());
+            drawable.draw(canvas);
+            return bitmap;
+        } catch (OutOfMemoryError e) {
+            // Handle the error
+            return null;
+        }
     }
 }
 

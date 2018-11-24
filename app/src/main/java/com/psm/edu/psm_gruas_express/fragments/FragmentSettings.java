@@ -92,13 +92,17 @@ public class FragmentSettings extends Fragment {
         tvEmail.setText(activity.user.getEmail());
         editTxtPhone.setText(activity.user.getPhone());
 
-        BitmapDrawable drawable = (BitmapDrawable) activity.imgPerfil.getDrawable();
-        Bitmap bitmap = drawable.getBitmap();
-        BitmapDrawable drawable2 = (BitmapDrawable) activity.imgBackground.getDrawable();
-        Bitmap bitmap2 = drawable2.getBitmap();
 
-        imgViewPerfil.setImageBitmap(bitmap);
-        imgViewbackground.setImageBitmap(bitmap2);
+        Bitmap bitmap = PhotoUtil.getBitmap(activity.imgPerfil.getDrawable(), Bitmap.Config.RGB_565);
+        if(bitmap != null) {
+            imgViewPerfil.setImageBitmap(bitmap);
+        }
+        Bitmap bitmap2 = PhotoUtil.getBitmap(activity.imgBackground.getDrawable(), Bitmap.Config.RGB_565);
+        if(bitmap2 != null) {
+            imgViewbackground.setImageBitmap(bitmap2);
+        }
+
+
 
 
         return view;

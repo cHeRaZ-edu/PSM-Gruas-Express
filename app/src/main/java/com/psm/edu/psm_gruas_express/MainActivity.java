@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -25,6 +26,7 @@ import com.psm.edu.psm_gruas_express.models.NetCallback;
 import com.psm.edu.psm_gruas_express.models.User;
 import com.psm.edu.psm_gruas_express.networking.Networking;
 import com.psm.edu.psm_gruas_express.sharedprefences.SharedUtil;
+import com.squareup.picasso.Picasso;
 
 import java.util.Arrays;
 import java.util.List;
@@ -44,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
     EditText editTextPassword;
     FloatingActionButton btnChangeColor;
     RelativeLayout relativeLayout;
+    ImageView imageView;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -56,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         editTextUser = (EditText) findViewById(R.id.EditTextName);
         editTextPassword = (EditText) findViewById(R.id.EditTextPassword);
         btnChangeColor = (FloatingActionButton) findViewById(R.id.btnChangeColor);
+        imageView = (ImageView) findViewById(R.id.imgViewPerfil);
 
         ButtonEvent();
     }
@@ -65,6 +69,18 @@ public class MainActivity extends AppCompatActivity {
         super.onStart();
 
         relativeLayout.setBackgroundColor(SharedUtil.getBackgroundColorLogin(MainActivity.this));
+
+        User user = new UserSessionDataSource(this).SelectTableUser();
+
+        if(user != null) {
+            if(user.getId() != -1) {
+                Picasso.get()
+                        .load(Networking.SERVER_IP + user.getImageURL())
+                        .placeholder(R.drawable.ic_photo_camera_black_56dp)
+                        .resize(200, 200)
+                        .into(imageView);
+            }
+        }
 
         SessionUser();
     }

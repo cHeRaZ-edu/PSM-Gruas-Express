@@ -80,9 +80,10 @@ public class FragmentMyService extends Fragment {
             }
         });
 
-        BitmapDrawable drawable = (BitmapDrawable) activity.imgBackgroundService.getDrawable();
-        Bitmap bitmap = drawable.getBitmap();
-        imgViewMyService.setImageBitmap(bitmap);
+        Bitmap bitmap = PhotoUtil.getBitmap(activity.imgBackgroundService.getDrawable(), Bitmap.Config.RGB_565);
+        if(bitmap != null) {
+            imgViewMyService.setImageBitmap(bitmap);
+        }
 
         return view;
     }
